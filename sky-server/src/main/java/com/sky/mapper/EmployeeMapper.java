@@ -6,6 +6,7 @@ import com.sky.entity.Employee;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Mapper
 public interface EmployeeMapper {
@@ -41,4 +42,12 @@ public interface EmployeeMapper {
      * @param employee
      */
     void update(Employee employee);
+
+    /**
+     * 根据主键查询员工
+     * @param id
+     * @return
+     */
+    @Select("select * from employee where id = #{id}")
+    Employee getById( Long id);
 }
